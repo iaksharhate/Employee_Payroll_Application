@@ -24,7 +24,11 @@ class EmployeePayrollData {
     get gender() { return this._gender; }
 
     set gender(gender){
-        this._gender = gender;
+        let genderRegex = RegExp('^[female|male]+$');
+        if(genderRegex.test(gener))
+            this._gender = gender;
+        else
+            throw "Gender is incorrect!!";
     }
 
     get department() { return this._department; }
@@ -36,7 +40,11 @@ class EmployeePayrollData {
     get salary() { return this._salary; }
 
     set salary(salary){
-        this._salary = salary;
+        let salaryRegx = RegExp('^[1-9][0-9]*$');
+        if(salaryRegx.test(salary))
+            this._salary =salary;
+        else
+            throw "Salary is incorrect !!!"
     }
 
     get note() { return this._note; }
@@ -48,7 +56,13 @@ class EmployeePayrollData {
     get startDate() { return this._startDate; }
 
     set startDate(startDate){
-        this._startDate = startDate;
+        let difference = Date.now() - startDate;
+        difference = Math.ceil(difference / (1000 * 60 * 60 * 24));
+        if (difference > 30 || difference < 0) {
+          throw "Start Date is Invalid";
+        } else {
+          this._startDate = startDate;
+        }
     }
 
     toString(){
