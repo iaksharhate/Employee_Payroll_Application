@@ -25,7 +25,7 @@ class EmployeePayrollData {
 
     set gender(gender){
         let genderRegex = RegExp('^[female|male]+$');
-        if(genderRegex.test(gener))
+        if(genderRegex.test(gender))
             this._gender = gender;
         else
             throw "Gender is incorrect!!";
@@ -67,10 +67,10 @@ class EmployeePayrollData {
 
     toString(){
         const options = { year: 'numeric', month: 'long', day: 'numeric' }
-        const empDate = !this.startDate ? "undefined" :
+        const employeeDate = !this.startDate ? "undefined" :
                         this.startDate.toLocaleDateString("en-US", options);
-        return "Name = " + this.name + ", Profile Image = " + this.profileImage 
+        return "Name = " + this.name + ", Profile Image = " + this.profilePic 
                 + ", Gender = " + this.gender + ", Department = " + this.department + ", Salary = "
-                + this.salary + ", Start Date = " + employeeDate + ", Notes = " + this.notes;
+                + this.salary + ", Start Date = " + employeeDate + ", Notes = " + this.note;
     }
 }
